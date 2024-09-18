@@ -1,4 +1,5 @@
 ﻿using System;
+using TwinCAT.Ads;
 using MyLibrary;
 
 namespace MyConsoleApp
@@ -7,9 +8,9 @@ namespace MyConsoleApp
     {
         static void Main(string[] args)
         {
-            MyClass myClass = new MyClass();
-            string message = myClass.SayHello("World");
-            Console.WriteLine(message);
+            PlcCommunicator plc = new PlcCommunicator();
+            plc.ToggleBoolean("MAIN.fbAxis1.bEnable"); // Replace with your actual variable name
+            Console.WriteLine("Boolean variable toggled.");
         }
     }
 }
