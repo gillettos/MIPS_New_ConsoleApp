@@ -8,14 +8,26 @@ namespace MyConsoleApp
     {
         static void Main(string[] args)
         {
-            //Set PLC coms UP
-            PlcCommunicator plc = new PlcCommunicator();
+          
+             
+              //toggle any boolean
+              PlcCommunicator plc = new PlcCommunicator();  //Set PLC coms UP
+              plc.ToggleBoolean("MAIN.fbAxis1.bEnable"); // Replace with your actual variable name
+              Console.WriteLine("Boolean variable toggled.");
 
+
+/*
             //mc_motors_on  (AXIS 1 for now)
             plc.mc_motors_on();
             Console.WriteLine("Motor 1 On.");
 
-            //i_stop
+            //i_Move  (Moves specified axis to new absolute position)
+            plc.Mc_imov(1, 100); // Example usage of Mc_istop
+            Console.WriteLine("Motion command executed.");
+
+
+            /*
+            //i_stop (Stop all Movement but leave enabled)
             plc.Mc_istop(1, 80.0f); // Example usage of Mc_istop
             Console.WriteLine("Motion command executed.");
 
@@ -23,14 +35,12 @@ namespace MyConsoleApp
             int intValue = plc.ReadInteger("MAIN.nIntToRead"); // Replace with your actual integer variable name
             Console.WriteLine($"Integer value read from PLC: {intValue}");
 
-          /*  
-            
-            //toggle any boolean
-            //PlcCommunicator plc = new PlcCommunicator();
-            plc.ToggleBoolean("MAIN.fbAxis1.bEnable"); // Replace with your actual variable name
-            Console.WriteLine("Boolean variable toggled.");
+*/
 
-            */
+
+
+
+              
         }
     }
 }
